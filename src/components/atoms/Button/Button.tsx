@@ -1,6 +1,6 @@
 export const Button = ({ label }: { label: string }) => {
 	return (
-		<button className="bg-green-500 rounded px-4 py-2 text-white font-medium">
+		<button className="rounded bg-green-500 px-4 py-2 font-medium text-white">
 			{label}
 		</button>
 	);
