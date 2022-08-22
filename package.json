@@ -35,6 +35,7 @@
 		"prepublishOnly": "yarn build"
 	},
 	"peerDependencies": {
+		"next": "^12.2.5",
 		"phosphor-react": "^1.4.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
@@ -62,6 +63,7 @@
 		"babel-loader": "^8.2.5",
 		"concurrently": "^7.3.0",
 		"esbuild": "^0.15.5",
+		"next": "^12.2.5",
 		"phosphor-react": "^1.4.1",
 		"postcss": "^8.4.16",
 		"prettier": "^2.7.1",
