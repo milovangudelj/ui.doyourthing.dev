@@ -4,7 +4,7 @@ type ButtonType = "filled" | "outlined" | "borderless";
 type ButtonSize = "lg" | "md" | "sm";
 
 interface ButtonProps {
-	children: any;
+	children?: React.ReactNode;
 	onClick?: MouseEventHandler<HTMLButtonElement>;
 	type?: ButtonType;
 	size?: ButtonSize;
