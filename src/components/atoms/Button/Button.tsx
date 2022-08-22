@@ -5,7 +5,7 @@ type ButtonSize = "lg" | "md" | "sm";
 
 interface ButtonProps {
 	children: any;
-	onClick: MouseEventHandler<HTMLButtonElement>;
+	onClick?: MouseEventHandler<HTMLButtonElement>;
 	type?: ButtonType;
 	size?: ButtonSize;
 }
