@@ -1,8 +1,11 @@
+import { MouseEventHandler } from "react";
+
 type ButtonType = "filled" | "outlined" | "borderless";
 type ButtonSize = "lg" | "md" | "sm";
 
 interface ButtonProps {
 	children: any;
+	onClick: MouseEventHandler<HTMLButtonElement>;
 	type?: ButtonType;
 	size?: ButtonSize;
 }
@@ -11,6 +14,7 @@ export const Button = ({
 	children,
 	type = "filled",
 	size = "lg",
+	...props
 }: ButtonProps) => {
 	const colors = {
 		filled:
@@ -36,6 +40,7 @@ export const Button = ({
 
 	return (
 		<button
+			onClick={props.onClick}
 			className={`${sizes.btn[size]} rounded border-2 font-medium ${colors[type]} transition`}
 		>
 			<span className={`${sizes.text[size]}`}>{children}</span>
