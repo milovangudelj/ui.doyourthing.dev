@@ -16,7 +16,7 @@
 		"keepClassNames": true
 	},
 	"module": {
-		"type": "es6"
+		"type": "commonjs"
 	},
 	"minify": false,
 	"sourceMaps": true
