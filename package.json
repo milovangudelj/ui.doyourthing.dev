@@ -1,6 +1,6 @@
 {
 	"name": "@doyourthing/ui",
-	"version": "0.1.36",
+	"version": "0.1.361",
 	"description": "UI Library for doyourthing",
 	"main": "dist/cjs/index.js",
 	"typings": "dist/index.d.ts",
