@@ -1,21 +1,32 @@
 {
 	"name": "@doyourthing/ui",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "UI Library for doyourthing",
 	"main": "./dist/index.js",
+	"typings": "./dist/index.d.ts",
 	"files": [
+		"README.md",
 		"dist"
 	],
 	"sideEffects": false,
-	"source": "src/index.ts",
+	"source": "./src/components/index.ts",
 	"directories": {
-		"src": "src"
+		"components": "src/components"
 	},
 	"repository": "https://github.com/ilikemartians/ui.git",
 	"bugs": "https://github.com/ilikemartians/ui/issues",
 	"author": "Milovan Gudelj <milovan.gudelj@gmail.com>",
 	"license": "GPL-3.0",
 	"private": false,
+	"scripts": {
+		"storybook": "start-storybook -p 6006",
+		"build-storybook": "build-storybook -o storybook-dist",
+		"build": "yarn clean && yarn build:js && yarn build:types",
+		"build:js": "npx swc ./src/components -d ./ && mv ./components ./dist",
+		"build:types": "tsc --emitDeclarationOnly --declaration --outDir ./dist",
+		"pack": "npx spack",
+		"clean": "rm -rf ./dist"
+	},
 	"peerDependencies": {
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
@@ -51,9 +62,5 @@
 	"dependencies": {},
 	"resolutions": {
 		"webpack": "^5"
-	},
-	"scripts": {
-		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook -o storybook-dist"
 	}
 }

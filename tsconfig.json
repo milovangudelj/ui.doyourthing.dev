@@ -1,6 +1,8 @@
 {
 	"extends": "@tsconfig/recommended/tsconfig.json",
 	"compilerOptions": {
-		"jsx": "preserve"
+		"jsx": "preserve",
+		"module": "ES6",
+		"moduleResolution": "Node16"
 	}
 }
