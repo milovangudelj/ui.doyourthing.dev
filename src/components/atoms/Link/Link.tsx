@@ -3,7 +3,7 @@ export const Link = ({
 	children,
 	className,
 }: {
-	href: string;
+	href?: string;
 	children?: React.ReactNode;
 	className?: string;
 }) => {
