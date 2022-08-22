@@ -25,7 +25,8 @@
 		"build:js": "npx swc ./src/components -d ./ && mv ./components ./dist",
 		"build:types": "tsc --emitDeclarationOnly --declaration --outDir ./dist",
 		"pack": "npx spack",
-		"clean": "rm -rf ./dist"
+		"clean": "rm -rf ./dist",
+		"publish": "yarn build && npm publish --access public"
 	},
 	"peerDependencies": {
 		"react": "^18.2.0",
