@@ -1,9 +1,13 @@
 {
 	"extends": "@tsconfig/recommended/tsconfig.json",
 	"compilerOptions": {
-		"jsx": "preserve",
-		"module": "ES6",
-		"moduleResolution": "node"
+		"jsx": "react-jsx",
+		"module": "ESNext",
+		"sourceMap": true,
+		"outDir": "dist",
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"emitDeclarationOnly": true
 	},
 	"exclude": [
 		"node_modules",

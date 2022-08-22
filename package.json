@@ -2,19 +2,18 @@
 	"name": "@doyourthing/ui",
 	"version": "0.1.351",
 	"description": "UI Library for doyourthing",
-	"main": "dist/index.cjs",
+	"main": "dist/cjs/index.js",
 	"typings": "dist/index.d.ts",
-	"module": "dist/doyourthingui.esm.js",
+	"module": "dist/esm/index.js",
 	"files": [
 		"README.md",
 		"dist"
 	],
 	"exports": {
-		"import": "./dist/doyourthingui.esm.js",
-		"require": "./dist/index.cjs",
+		"import": "./dist/esm/index.js",
+		"require": "./dist/cjs/index.js",
 		"types": "./dist/index.d.ts"
 	},
-	"type": "module",
 	"sideEffects": false,
 	"source": "./src/components/index.ts",
 	"directories": {
@@ -28,11 +27,10 @@
 	"scripts": {
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook -o storybook-dist",
-		"build": "yarn clean && ./scripts/build.sh --external:react --external:react-dom",
-		"build:old": "yarn clean && yarn build:js && yarn build:types",
-		"build:js": "npx swc ./src/components -d ./ && mv ./components ./dist",
+		"build": "yarn clean && yarn build:js && yarn build:types",
+		"build-watch": "NODE_ENV=production rollup -c -w",
+		"build:js": "NODE_ENV=production rollup -c",
 		"build:types": "tsc --emitDeclarationOnly --declaration --outDir ./dist",
-		"pack": "npx spack",
 		"clean": "rm -rf ./dist",
 		"prepublishOnly": "yarn build"
 	},
@@ -43,6 +41,9 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.18.10",
+		"@rollup/plugin-commonjs": "^22.0.2",
+		"@rollup/plugin-node-resolve": "^13.3.0",
+		"@rollup/plugin-typescript": "^8.3.4",
 		"@storybook/addon-actions": "^6.5.10",
 		"@storybook/addon-essentials": "^6.5.10",
 		"@storybook/addon-interactions": "^6.5.10",
@@ -67,6 +68,9 @@
 		"prettier-plugin-tailwindcss": "^0.1.13",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"rollup": "^2.78.1",
+		"rollup-plugin-dts": "^4.2.2",
+		"rollup-plugin-postcss": "^4.0.2",
 		"tailwindcss": "^3.1.8",
 		"typescript": "^4.7.4"
 	},
