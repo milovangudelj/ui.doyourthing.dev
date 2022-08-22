@@ -1,6 +1,6 @@
 {
 	"name": "@doyourthing/ui",
-	"version": "0.1.32",
+	"version": "0.1.331",
 	"description": "UI Library for doyourthing",
 	"main": "./dist/index.js",
 	"typings": "./dist/index.d.ts",
@@ -25,7 +25,8 @@
 		"build:js": "npx swc ./src/components -d ./ && mv ./components ./dist",
 		"build:types": "tsc --emitDeclarationOnly --declaration --outDir ./dist",
 		"pack": "npx spack",
-		"clean": "rm -rf ./dist"
+		"clean": "rm -rf ./dist",
+		"prepublish": "yarn build"
 	},
 	"peerDependencies": {
 		"phosphor-react": "^1.4.1",
