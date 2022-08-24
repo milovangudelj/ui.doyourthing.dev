@@ -11,4 +11,8 @@ export const parameters = {
 	previewTabs: {
 	  'storybook/docs/panel': { index: -1 },
 	},
+	darkMode: {
+		current: 'dark',
+		stylePreview: true
+	}
 };

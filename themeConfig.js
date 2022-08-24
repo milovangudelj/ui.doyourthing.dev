@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ["./src/components/**/*.{js,jsx,ts,tsx}"],
+	darkMode: "class",
 	theme: {
 		colors: {
 			primary: {
@@ -51,7 +52,7 @@ module.exports = {
 				100: "#DBEAFE",
 				50: "#EFF6FF",
 			},
-			zync: {
+			zinc: {
 				900: "#18181B",
 				800: "#27272A",
 				700: "#3F3F46",
