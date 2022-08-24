@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { InputLabel } from "./InputLabel";
 
 export default {
-	title: "Atoms/Inputs/InputLabel",
+	title: "Atoms/InputLabel",
 	component: InputLabel,
 } as ComponentMeta<typeof InputLabel>;
 

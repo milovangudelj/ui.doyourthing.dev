@@ -10,7 +10,7 @@ export interface EmailInputProps {
 export const EmailInput = ({
 	name = "email",
 	id = name,
-	placeholder = name,
+	placeholder = "hello@world.test",
 	className,
 }: EmailInputProps) => {
 	return (

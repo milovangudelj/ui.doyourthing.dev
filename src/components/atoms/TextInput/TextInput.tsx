@@ -10,7 +10,7 @@ export interface TextInputProps {
 export const TextInput = ({
 	name = "text",
 	id = name,
-	placeholder = name,
+	placeholder = "More text",
 	className,
 }: TextInputProps) => {
 	return (

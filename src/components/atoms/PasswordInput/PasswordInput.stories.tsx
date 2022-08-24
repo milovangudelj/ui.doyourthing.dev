@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { PasswordInput } from "./PasswordInput";
 
 export default {
-	title: "Atoms/Inputs/PasswordInput",
+	title: "Atoms/FormInputs/PasswordInput",
 	component: PasswordInput,
 } as ComponentMeta<typeof PasswordInput>;
 

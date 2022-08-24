@@ -14,27 +14,23 @@ type TypeMap = {
 	text: TextInputProps;
 };
 
-interface FormInputProps {}
+type GenerateCombos<T> = {
+	[K in keyof T]: {
+		type: K;
+	} & T[K];
+}[keyof T];
 
-export const FormInput = ({
-	type,
-	props,
-}: {
-	type: keyof TypeMap;
-	props: TypeMap[typeof type];
-}) => {
+export type FormInputProps = GenerateCombos<TypeMap>;
+
+export const FormInput = ({ type, ...props }: FormInputProps) => {
 	const element: {
-		[Property in keyof TypeMap]: (props: TypeMap[Property]) => JSX.Element;
+		[K in keyof TypeMap]: JSX.Element;
 	} = {
-		email: (props) => <EmailInput {...props} />,
-		password: (props) => <PasswordInput {...props} />,
-		text: (props) => <TextInput {...props} />,
+		email: <EmailInput {...props} />,
+		password: <PasswordInput {...props} />,
+		text: <TextInput {...props} />,
 	};
 	const El = element[type];
 
-	return (
-		<Suspense fallback={<EmailInput />}>
-			<El />
-		</Suspense>
-	);
+	return <Suspense fallback={<EmailInput />}>{element[type]}</Suspense>;
 };

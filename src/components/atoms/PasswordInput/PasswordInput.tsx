@@ -11,7 +11,7 @@ export interface PasswordInputProps {
 export const PasswordInput = ({
 	name = "password",
 	id = name,
-	placeholder = name,
+	placeholder = "********",
 	show = false,
 	className,
 }: PasswordInputProps) => {

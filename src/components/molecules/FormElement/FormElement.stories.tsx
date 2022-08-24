@@ -20,4 +20,12 @@ EmailInput.args = {
 export const PasswordInput = Template.bind({});
 PasswordInput.args = {
 	type: "password",
+	props: {
+		show: false,
+	},
+};
+
+export const TextInput = Template.bind({});
+TextInput.args = {
+	type: "text",
 };

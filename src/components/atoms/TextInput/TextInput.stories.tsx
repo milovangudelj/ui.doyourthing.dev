@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { TextInput } from "./TextInput";
 
 export default {
-	title: "Atoms/Inputs/TextInput",
+	title: "Atoms/FormInputs/TextInput",
 	component: TextInput,
 } as ComponentMeta<typeof TextInput>;
 
