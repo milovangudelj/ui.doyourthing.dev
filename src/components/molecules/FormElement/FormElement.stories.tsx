@@ -1,0 +1,23 @@
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+
+import { FormElement } from "./FormElement";
+
+export default {
+	title: "Molecules/FormElement",
+	component: FormElement,
+} as ComponentMeta<typeof FormElement>;
+
+const Template: ComponentStory<typeof FormElement> = (args: any) => (
+	<FormElement {...args} />
+);
+
+export const EmailInput = Template.bind({});
+EmailInput.args = {
+	type: "email",
+};
+
+export const PasswordInput = Template.bind({});
+PasswordInput.args = {
+	type: "password",
+};
