@@ -36,11 +36,11 @@ export const PasswordInput = forwardRef(
 					id={id}
 					placeholder={placeholder}
 					className={cn(
-						"border-none bg-transparent p-0 ring-0 focus:border-none focus:ring-0",
+						"w-full border-none bg-transparent py-2 pl-3 pr-0 ring-0 focus:border-none focus:ring-0",
 						className
 					)}
 				/>
-				<button onClick={toggle} className="ml-3">
+				<button onClick={toggle} className="p-2.5">
 					{visible ? (
 						<Eye className="h-5 w-5 text-dark-me transition hover:text-dark-he dark:text-light-me dark:hover:text-light-he" />
 					) : (

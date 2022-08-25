@@ -1,4 +1,4 @@
-import React, { Suspense, useLayoutEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import cn from "classnames";
 
 import { EmailInputProps, PasswordInputProps, TextInputProps } from "../";
@@ -42,7 +42,7 @@ export const FormInput = ({ type, ...props }: FormInputProps) => {
 		setFocused(false);
 	};
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		formInput.current?.addEventListener("focus", focus);
 		formInput.current?.addEventListener("blur", blur);
 
@@ -55,7 +55,7 @@ export const FormInput = ({ type, ...props }: FormInputProps) => {
 	return (
 		<div
 			className={cn(
-				"form-input flex w-fit items-center rounded bg-transparent py-2 px-3 text-dark-he placeholder:text-dark-le dark:text-light-he dark:placeholder:text-light-le",
+				"form-input flex w-full items-center rounded bg-transparent p-0 text-dark-he placeholder:text-dark-le dark:text-light-he dark:placeholder:text-light-le",
 				{
 					"border-primary-500 outline-none ring-1 ring-primary-500 dark:border-primary-400 dark:ring-primary-400":
 						focused,
@@ -65,7 +65,9 @@ export const FormInput = ({ type, ...props }: FormInputProps) => {
 				}
 			)}
 		>
-			<Suspense fallback={<EmailInput />}>{element[type]}</Suspense>
+			<Suspense fallback={<EmailInput ref={formInput} />}>
+				{element[type]}
+			</Suspense>
 		</div>
 	);
 };
