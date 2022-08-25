@@ -1,4 +1,5 @@
 import cn from "classnames";
+import { forwardRef, LegacyRef } from "react";
 
 export interface TextInputProps {
 	name?: string;
@@ -7,24 +8,30 @@ export interface TextInputProps {
 	className?: string;
 }
 
-export const TextInput = ({
-	name = "text",
-	id = name,
-	placeholder = "More text",
-	className,
-}: TextInputProps) => {
-	return (
-		<input
-			type="text"
-			name={name}
-			id={id}
-			placeholder={placeholder}
-			className={cn(
-				"border-none bg-transparent p-0 ring-0 focus:border-none focus:ring-0",
-				className
-			)}
-		/>
-	);
-};
+export const TextInput = forwardRef(
+	(
+		{
+			name = "text",
+			id = name,
+			placeholder = "More text",
+			className,
+		}: TextInputProps,
+		ref: LegacyRef<HTMLInputElement>
+	) => {
+		return (
+			<input
+				ref={ref}
+				type="text"
+				name={name}
+				id={id}
+				placeholder={placeholder}
+				className={cn(
+					"border-none bg-transparent p-0 ring-0 focus:border-none focus:ring-0",
+					className
+				)}
+			/>
+		);
+	}
+);
 
 export default TextInput;

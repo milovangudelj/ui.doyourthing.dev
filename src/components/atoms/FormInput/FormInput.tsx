@@ -1,4 +1,5 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useLayoutEffect, useRef, useState } from "react";
+import cn from "classnames";
 
 import { EmailInputProps, PasswordInputProps, TextInputProps } from "../";
 
@@ -23,18 +24,48 @@ type GenerateCombos<T> = {
 export type FormInputProps = GenerateCombos<TypeMap>;
 
 export const FormInput = ({ type, ...props }: FormInputProps) => {
+	const [focused, setFocused] = useState<boolean>(false);
+	const formInput = useRef<HTMLInputElement>(null);
+
 	const element: {
 		[K in keyof TypeMap]: JSX.Element;
 	} = {
-		email: <EmailInput {...props} />,
-		password: <PasswordInput {...props} />,
-		text: <TextInput {...props} />,
+		email: <EmailInput ref={formInput} {...props} />,
+		password: <PasswordInput ref={formInput} {...props} />,
+		text: <TextInput ref={formInput} {...props} />,
 	};
-	const El = element[type];
+
+	const focus = () => {
+		setFocused(true);
+	};
+	const blur = () => {
+		setFocused(false);
+	};
+
+	useLayoutEffect(() => {
+		formInput.current?.addEventListener("focus", focus);
+		formInput.current?.addEventListener("blur", blur);
+
+		return () => {
+			formInput.current?.removeEventListener("focus", focus);
+			formInput.current?.removeEventListener("blur", blur);
+		};
+	}, []);
 
 	return (
-		<span className="border-zinc-300 dark:border-zinc-600 form-input flex w-fit items-center rounded bg-transparent py-2 px-3 text-dark-he placeholder:text-dark-le focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:text-light-he dark:placeholder:text-light-le dark:focus:border-primary-400 dark:focus:ring-primary-400">
+		<div
+			className={cn(
+				"form-input flex w-fit items-center rounded bg-transparent py-2 px-3 text-dark-he placeholder:text-dark-le dark:text-light-he dark:placeholder:text-light-le",
+				{
+					"border-primary-500 outline-none ring-1 ring-primary-500 dark:border-primary-400 dark:ring-primary-400":
+						focused,
+				},
+				{
+					"border-zinc-300 dark:border-zinc-600": !focused,
+				}
+			)}
+		>
 			<Suspense fallback={<EmailInput />}>{element[type]}</Suspense>
-		</span>
+		</div>
 	);
 };

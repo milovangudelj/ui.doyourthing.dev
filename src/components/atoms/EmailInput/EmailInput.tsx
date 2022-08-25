@@ -1,4 +1,5 @@
 import cn from "classnames";
+import { forwardRef, LegacyRef } from "react";
 
 export interface EmailInputProps {
 	name?: string;
@@ -7,24 +8,30 @@ export interface EmailInputProps {
 	className?: string;
 }
 
-export const EmailInput = ({
-	name = "email",
-	id = name,
-	placeholder = "hello@world.test",
-	className,
-}: EmailInputProps) => {
-	return (
-		<input
-			type="email"
-			name={name}
-			id={id}
-			placeholder={placeholder}
-			className={cn(
-				"border-none bg-transparent p-0 ring-0 focus:border-none focus:ring-0",
-				className
-			)}
-		/>
-	);
-};
+export const EmailInput = forwardRef(
+	(
+		{
+			name = "email",
+			id = name,
+			placeholder = "hello@world.test",
+			className,
+		}: EmailInputProps,
+		ref: LegacyRef<HTMLInputElement>
+	) => {
+		return (
+			<input
+				ref={ref}
+				type="email"
+				name={name}
+				id={id}
+				placeholder={placeholder}
+				className={cn(
+					"border-none bg-transparent p-0 ring-0 focus:border-none focus:ring-0",
+					className
+				)}
+			/>
+		);
+	}
+);
 
 export default EmailInput;
