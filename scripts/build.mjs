@@ -47,5 +47,6 @@ esbuild
 		format: "cjs",
 		outfile: `${dst}/index.cjs`,
 		bundle: true,
+		external: ["react", "react-dom", "next", "classnames"],
 	})
 	.catch(() => process.exit(1));
