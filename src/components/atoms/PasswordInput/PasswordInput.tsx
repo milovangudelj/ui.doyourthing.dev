@@ -1,4 +1,6 @@
 import cn from "classnames";
+import { Eye, EyeClosed } from "phosphor-react";
+import { useState } from "react";
 
 export interface PasswordInputProps {
 	name?: string;
@@ -11,21 +13,36 @@ export interface PasswordInputProps {
 export const PasswordInput = ({
 	name = "password",
 	id = name,
-	placeholder = "********",
+	placeholder = "••••••••",
 	show = false,
 	className,
 }: PasswordInputProps) => {
+	const [visible, setVisible] = useState(show);
+
+	const toggle = () => {
+		setVisible((current) => !current);
+	};
+
 	return (
-		<input
-			type={show ? "text" : "password"}
-			name={name}
-			id={id}
-			placeholder={placeholder}
-			className={cn(
-				"border-zinc-300 dark:border-zinc-600 form-input rounded bg-transparent text-dark-he placeholder:text-dark-le focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:text-light-he dark:placeholder:text-light-le dark:focus:border-primary-400 dark:focus:ring-primary-400",
-				className
-			)}
-		/>
+		<>
+			<input
+				type={visible ? "text" : "password"}
+				name={name}
+				id={id}
+				placeholder={placeholder}
+				className={cn(
+					"border-none bg-transparent p-0 ring-0 focus:border-none focus:ring-0",
+					className
+				)}
+			/>
+			<button onClick={toggle} className="ml-3">
+				{visible ? (
+					<Eye className="h-5 w-5 text-dark-me transition hover:text-dark-he dark:text-light-me dark:hover:text-light-he" />
+				) : (
+					<EyeClosed className="h-5 w-5 text-dark-me transition hover:text-dark-he dark:text-light-me dark:hover:text-light-he" />
+				)}
+			</button>
+		</>
 	);
 };
 

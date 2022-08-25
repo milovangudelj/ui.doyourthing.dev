@@ -32,5 +32,9 @@ export const FormInput = ({ type, ...props }: FormInputProps) => {
 	};
 	const El = element[type];
 
-	return <Suspense fallback={<EmailInput />}>{element[type]}</Suspense>;
+	return (
+		<span className="border-zinc-300 dark:border-zinc-600 form-input flex w-fit items-center rounded bg-transparent py-2 px-3 text-dark-he placeholder:text-dark-le focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:text-light-he dark:placeholder:text-light-le dark:focus:border-primary-400 dark:focus:ring-primary-400">
+			<Suspense fallback={<EmailInput />}>{element[type]}</Suspense>
+		</span>
+	);
 };
