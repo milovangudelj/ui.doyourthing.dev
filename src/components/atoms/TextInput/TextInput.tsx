@@ -32,7 +32,7 @@ export const TextInput = forwardRef(
 				id={id}
 				placeholder={placeholder}
 				className={cn(
-					"border-none bg-transparent py-2 px-3 ring-0 focus:border-none focus:ring-0",
+					"w-full border-none bg-transparent py-2 px-3 ring-0 focus:border-none focus:ring-0",
 					className
 				)}
 			/>
