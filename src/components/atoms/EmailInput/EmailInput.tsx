@@ -1,11 +1,13 @@
 import cn from "classnames";
-import { forwardRef, LegacyRef } from "react";
+import { FocusEventHandler, forwardRef, LegacyRef } from "react";
 
 export interface EmailInputProps {
 	name?: string;
 	id?: string;
 	placeholder?: string;
 	className?: string;
+	onBlur?: FocusEventHandler<HTMLInputElement>;
+	onFocus?: FocusEventHandler<HTMLInputElement>;
 }
 
 export const EmailInput = forwardRef(
@@ -15,12 +17,16 @@ export const EmailInput = forwardRef(
 			id = name,
 			placeholder = "hello@world.test",
 			className,
+			onBlur,
+			onFocus,
 		}: EmailInputProps,
 		ref: LegacyRef<HTMLInputElement>
 	) => {
 		return (
 			<input
 				ref={ref}
+				onFocus={onFocus}
+				onBlur={onBlur}
 				type="email"
 				name={name}
 				id={id}

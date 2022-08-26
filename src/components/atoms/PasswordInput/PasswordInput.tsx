@@ -1,4 +1,4 @@
-import { forwardRef, LegacyRef, useState } from "react";
+import { FocusEventHandler, forwardRef, LegacyRef, useState } from "react";
 import { Eye, EyeClosed } from "phosphor-react";
 import cn from "classnames";
 
@@ -8,6 +8,8 @@ export interface PasswordInputProps {
 	placeholder?: string;
 	show?: boolean;
 	className?: string;
+	onBlur?: FocusEventHandler<HTMLInputElement>;
+	onFocus?: FocusEventHandler<HTMLInputElement>;
 }
 
 export const PasswordInput = forwardRef(
@@ -18,6 +20,8 @@ export const PasswordInput = forwardRef(
 			placeholder = "••••••••",
 			show = false,
 			className,
+			onBlur,
+			onFocus,
 		}: PasswordInputProps,
 		ref: LegacyRef<HTMLInputElement>
 	) => {
@@ -31,6 +35,8 @@ export const PasswordInput = forwardRef(
 			<>
 				<input
 					ref={ref}
+					onFocus={onFocus}
+					onBlur={onBlur}
 					type={visible ? "text" : "password"}
 					name={name}
 					id={id}

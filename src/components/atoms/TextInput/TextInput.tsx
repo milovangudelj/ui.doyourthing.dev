@@ -1,11 +1,13 @@
 import cn from "classnames";
-import { forwardRef, LegacyRef } from "react";
+import { FocusEventHandler, forwardRef, LegacyRef } from "react";
 
 export interface TextInputProps {
 	name?: string;
 	id?: string;
 	placeholder?: string;
 	className?: string;
+	onBlur?: FocusEventHandler<HTMLInputElement>;
+	onFocus?: FocusEventHandler<HTMLInputElement>;
 }
 
 export const TextInput = forwardRef(
@@ -15,12 +17,16 @@ export const TextInput = forwardRef(
 			id = name,
 			placeholder = "More text",
 			className,
+			onBlur,
+			onFocus,
 		}: TextInputProps,
 		ref: LegacyRef<HTMLInputElement>
 	) => {
 		return (
 			<input
 				ref={ref}
+				onFocus={onFocus}
+				onBlur={onBlur}
 				type="text"
 				name={name}
 				id={id}
