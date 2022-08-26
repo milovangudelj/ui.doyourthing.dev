@@ -1,3 +1,9 @@
+import React from 'react';
+import { DocsContainer } from '@storybook/addon-docs';
+import { useDarkMode } from 'storybook-dark-mode'
+
+import { dytDark, dytLight } from './dytTheme';
+
 import "../src/styles/globals.css";
 
 export const parameters = {
@@ -13,6 +19,21 @@ export const parameters = {
 	},
 	darkMode: {
 		current: 'dark',
+		dark: dytDark,
+		light: dytLight,
 		stylePreview: true
-	}
+	},
+	docs: {
+		container: (props) => {
+			 const isDark = useDarkMode();
+	 
+			 const { id: storyId, storyById } = props.context;
+			 const {
+				  parameters: { docs = {} },
+			 } = storyById(storyId);
+			 docs.theme = isDark ? dytDark : dytLight;
+	 
+			 return React.createElement(DocsContainer, props);
+		},
+  },
 };

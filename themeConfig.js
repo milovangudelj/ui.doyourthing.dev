@@ -80,7 +80,8 @@ module.exports = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ["'DM Sans'", "sans-serif"],
+				sans: "'DM Sans', sans-serif",
+				mono: "'DM Mono', monospaced",
 			},
 			backgroundImage: {
 				"unsplash-random":
