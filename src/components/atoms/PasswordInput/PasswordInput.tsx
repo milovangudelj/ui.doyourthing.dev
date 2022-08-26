@@ -46,7 +46,7 @@ export const PasswordInput = forwardRef(
 						className
 					)}
 				/>
-				<button onClick={toggle} className="p-2.5">
+				<button type="button" onClick={toggle} className="p-2.5">
 					{visible ? (
 						<Eye className="h-5 w-5 text-dark-me transition hover:text-dark-he dark:text-light-me dark:hover:text-light-he" />
 					) : (
