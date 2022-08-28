@@ -1,29 +1,24 @@
-import { FocusEventHandler, forwardRef, LegacyRef, useState } from "react";
+import { ComponentPropsWithoutRef, forwardRef, useState } from "react";
 import { Eye, EyeClosed } from "phosphor-react";
 import cn from "classnames";
 
-export interface PasswordInputProps {
-	name?: string;
-	id?: string;
-	placeholder?: string;
+export interface PasswordInputProps extends ComponentPropsWithoutRef<"input"> {
+	type?: "password";
 	show?: boolean;
-	className?: string;
-	onBlur?: FocusEventHandler<HTMLInputElement>;
-	onFocus?: FocusEventHandler<HTMLInputElement>;
 }
 
-export const PasswordInput = forwardRef(
+export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 	(
 		{
+			type = "password",
 			name = "password",
 			id = name,
 			placeholder = "••••••••",
 			show = false,
 			className,
-			onBlur,
-			onFocus,
-		}: PasswordInputProps,
-		ref: LegacyRef<HTMLInputElement>
+			...props
+		},
+		ref
 	) => {
 		const [visible, setVisible] = useState(show);
 
@@ -35,9 +30,7 @@ export const PasswordInput = forwardRef(
 			<>
 				<input
 					ref={ref}
-					onFocus={onFocus}
-					onBlur={onBlur}
-					type={visible ? "text" : "password"}
+					type={visible ? "text" : type}
 					name={name}
 					id={id}
 					placeholder={placeholder}
@@ -45,6 +38,7 @@ export const PasswordInput = forwardRef(
 						"w-full border-none bg-transparent py-2 pl-3 pr-0 text-dark-he ring-0 placeholder:text-dark-le focus:border-none focus:ring-0 dark:text-light-he dark:placeholder:text-light-le",
 						className
 					)}
+					{...props}
 				/>
 				<button
 					type="button"

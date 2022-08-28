@@ -1,19 +1,26 @@
-export const Link = ({
-	href,
-	children,
-	className,
-}: {
-	href?: string;
-	children?: React.ReactNode;
-	className?: string;
-}) => {
-	const classes =
-		`text-primary-500 underline hover:text-primary-400 active:text-primary-600` +
-		`${className ? " " + className : ""}`;
+import { ComponentPropsWithoutRef, forwardRef } from "react";
+import cn from "classnames";
 
-	return (
-		<a href={href} className={classes}>
-			{children}
-		</a>
-	);
-};
+export interface LinkProps extends ComponentPropsWithoutRef<"a"> {
+	styled?: boolean;
+}
+
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
+	({ styled = true, className, children, ...props }, ref) => {
+		return (
+			<a
+				ref={ref}
+				className={cn(
+					{
+						"text-primary-500 underline hover:text-primary-400 active:text-primary-600":
+							styled,
+					},
+					className
+				)}
+				{...props}
+			>
+				{children}
+			</a>
+		);
+	}
+);

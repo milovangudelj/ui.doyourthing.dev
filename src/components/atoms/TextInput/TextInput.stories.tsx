@@ -1,18 +1,16 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { TextInput } from "./TextInput";
+import { TextInput, TextInputProps } from "./TextInput";
 
 export default {
 	title: "Atoms/FormInputs/TextInput",
 	component: TextInput,
 } as ComponentMeta<typeof TextInput>;
 
-const Template: ComponentStory<typeof TextInput> = (args: any) => (
+const Template: ComponentStory<typeof TextInput> = (args: TextInputProps) => (
 	<TextInput {...args} />
 );
 
-export const Email = Template.bind({});
-Email.args = {
-	name: "Email",
-};
+export const Text = Template.bind({});
+Text.args = {};
