@@ -1,12 +1,7 @@
-import { GoogleLogo } from "phosphor-react";
 import { ComponentProps } from "react";
 import cn from "classnames";
 
 import { Button, ButtonProps } from "../Button";
-
-export interface GoogleButtonProps extends ButtonProps {
-	label: string;
-}
 
 interface GoogleIconProps extends ComponentProps<"svg"> {
 	width?: number;
@@ -57,10 +52,16 @@ const GoogleIcon = ({
 	);
 };
 
-export const GoogleButton = ({ label, ...props }: GoogleButtonProps) => {
+export const GoogleButton = ({ children, ...props }: ButtonProps) => {
 	return (
-		<Button {...props} leftIcon={GoogleIcon} variant="filled" color="blue">
-			{label}
+		<Button
+			{...props}
+			leftIcon={GoogleIcon}
+			variant="filled"
+			color="blue"
+			size="lg"
+		>
+			{children}
 		</Button>
 	);
 };
