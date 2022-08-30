@@ -36,7 +36,7 @@ export const dytDark = create({
 
   brandTitle: 'DoYourThing UI',
   brandUrl: 'https://doyourthing.dev',
-  brandImage: 'https://place-hold.it/350x150',
+  brandImage: 'https://ui.doyourthing.dev/dyt-logo.svg',
   brandTarget: '_self',
   
 });
