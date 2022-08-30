@@ -2,8 +2,6 @@ import { create } from '@storybook/theming';
 
 import {theme} from '../themeConfig';
 
-console.log({theme})
-
 export const dytDark = create({
   base: 'dark',
 
