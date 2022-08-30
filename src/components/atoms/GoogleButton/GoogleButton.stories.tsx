@@ -1,21 +1,22 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
 
-import { GoogleButton, GoogleButtonProps } from "./GoogleButton";
+import { GoogleButton } from "./GoogleButton";
+import { ButtonProps } from "../Button";
 
 export default {
 	title: "Atoms/GoogleButton",
 	component: GoogleButton,
-} as Meta<GoogleButtonProps>;
+} as Meta<ButtonProps>;
 
-const Template: Story<GoogleButtonProps> = (args) => <GoogleButton {...args} />;
+const Template: Story<ButtonProps> = (args) => <GoogleButton {...args} />;
 
-export const SignIn: Story<GoogleButtonProps> = Template.bind({});
+export const SignIn: Story<ButtonProps> = Template.bind({});
 SignIn.args = {
-	label: "Sign in with Google",
+	children: "Sign in with Google",
 };
 
-export const SignUp: Story<GoogleButtonProps> = Template.bind({});
+export const SignUp: Story<ButtonProps> = Template.bind({});
 SignUp.args = {
-	label: "Sign up with Google",
+	children: "Sign up with Google",
 };
