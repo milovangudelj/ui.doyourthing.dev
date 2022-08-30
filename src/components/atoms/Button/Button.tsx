@@ -1,20 +1,24 @@
 import {
 	ReactNode,
 	forwardRef,
-	LegacyRef,
 	ComponentPropsWithoutRef,
+	ComponentProps,
+	ElementType,
 } from "react";
 import cn from "classnames";
+import { Icon } from "phosphor-react";
 
 type ButtonVariant = "filled" | "outlined" | "text";
 type ButtonSize = "sm" | "md" | "lg";
 type ButtonColor = "primary" | "accent" | "red" | "blue" | "zinc";
 
-export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
+interface Props extends ComponentPropsWithoutRef<"button"> {
 	variant?: ButtonVariant;
 	size?: ButtonSize;
 	color?: ButtonColor;
 	fullWidth?: boolean;
+	rightIcon?: ReactNode | Icon | (() => JSX.Element);
+	leftIcon?: ReactNode | Icon | any;
 	className?: string;
 	children: ReactNode;
 }
@@ -108,36 +112,58 @@ const sizes = {
 	},
 };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, Props>(
 	(
 		{
 			variant = "filled",
 			size = "lg",
 			color = "primary",
 			fullWidth = false,
+			leftIcon,
+			rightIcon,
 			className,
 			children,
 			...props
 		},
 		ref
 	) => {
+		const LIcon = leftIcon as ElementType;
+		const RIcon = rightIcon as ElementType;
+
 		return (
 			<button
 				ref={ref}
 				className={cn(
 					sizes.btn[size],
-					sizes.text[size],
 					colors[variant].background[color],
 					colors[variant].border[color],
 					colors[variant].text[color],
-					"rounded border-2 font-medium transition",
+					"flex items-center justify-center rounded border-2 font-medium transition",
 					{ "w-full": fullWidth },
 					className
 				)}
 				{...props}
 			>
-				<span>{children}</span>
+				{leftIcon && (
+					<LIcon
+						width={20}
+						height={20}
+						weight="bold"
+						className="h-5 w-5"
+					/>
+				)}
+				<span className={cn(sizes.text[size])}>{children}</span>
+				{rightIcon && (
+					<RIcon
+						width={20}
+						height={20}
+						weight="bold"
+						className="h-5 w-5"
+					/>
+				)}
 			</button>
 		);
 	}
 );
+
+export type ButtonProps = ComponentProps<typeof Button>;
