@@ -24,77 +24,153 @@ interface Props extends ComponentPropsWithoutRef<"button"> {
 }
 
 const colors = {
-	filled: {
-		background: {
-			primary: "bg-primary-500 hover:bg-primary-400 active:bg-primary-600",
-			accent: "bg-accent-500 hover:bg-accent-400 active:bg-accent-600",
-			red: "bg-red-500 hover:bg-red-400 active:bg-red-600",
-			blue: "bg-blue-500 hover:bg-blue-400 active:bg-blue-600",
-			zinc: "bg-zinc-500 hover:bg-zinc-400 active:bg-zinc-600",
+	enabled: {
+		filled: {
+			background: {
+				primary:
+					"bg-primary-500 hover:bg-primary-400 active:bg-primary-600",
+				accent: "bg-accent-500 hover:bg-accent-400 active:bg-accent-600",
+				red: "bg-red-500 hover:bg-red-400 active:bg-red-600",
+				blue: "bg-blue-500 hover:bg-blue-400 active:bg-blue-600",
+				zinc: "bg-zinc-500 hover:bg-zinc-400 active:bg-zinc-600",
+			},
+			border: {
+				primary:
+					"border-primary-500 hover:border-primary-400 active:border-primary-600",
+				accent:
+					"border-accent-500 hover:border-accent-400 active:border-accent-600",
+				red: "border-red-500 hover:border-red-400 active:border-red-600",
+				blue: "border-blue-500 hover:border-blue-400 active:border-blue-600",
+				zinc: "border-zinc-500 hover:border-zinc-400 active:border-zinc-600",
+			},
+			text: {
+				primary: "text-white",
+				accent: "text-white",
+				red: "text-white",
+				blue: "text-white",
+				zinc: "text-white",
+			},
 		},
-		border: {
-			primary:
-				"border-primary-500 hover:border-primary-400 active:border-primary-600",
-			accent:
-				"border-accent-500 hover:border-accent-400 active:border-accent-600",
-			red: "border-red-500 hover:border-red-400 active:border-red-600",
-			blue: "border-blue-500 hover:border-blue-400 active:border-blue-600",
-			zinc: "border-zinc-500 hover:border-zinc-400 active:border-zinc-600",
+		outlined: {
+			background: {
+				primary:
+					"bg-transparent hover:bg-primary-500/5 active:bg-primary-500/10",
+				accent:
+					"bg-transparent hover:bg-accent-500/5 active:bg-accent-500/10",
+				red: "bg-transparent hover:bg-red-500/5 active:bg-red-500/10",
+				blue: "bg-transparent hover:bg-blue-500/5 active:bg-blue-500/10",
+				zinc: "bg-transparent hover:bg-zinc-500/5 active:bg-zinc-500/10",
+			},
+			border: {
+				primary: "border-primary-500",
+				accent: "border-accent-500",
+				red: "border-red-500",
+				blue: "border-blue-500",
+				zinc: "border-zinc-500",
+			},
+			text: {
+				primary: "text-primary-500",
+				accent: "text-accent-500",
+				red: "text-red-500",
+				blue: "text-blue-500",
+				zinc: "text-zinc-500",
+			},
 		},
 		text: {
-			primary: "text-white",
-			accent: "text-white",
-			red: "text-white",
-			blue: "text-white",
-			zinc: "text-white",
+			background: {
+				primary:
+					"bg-transparent hover:bg-primary-500/5 active:bg-primary-500/10",
+				accent:
+					"bg-transparent hover:bg-accent-500/5 active:bg-accent-500/10",
+				red: "bg-transparent hover:bg-red-500/5 active:bg-red-500/10",
+				blue: "bg-transparent hover:bg-blue-500/5 active:bg-blue-500/10",
+				zinc: "bg-transparent hover:bg-zinc-500/5 active:bg-zinc-500/10",
+			},
+			border: {
+				primary: "border-transparent",
+				accent: "border-transparent",
+				red: "border-transparent",
+				blue: "border-transparent",
+				zinc: "border-transparent",
+			},
+			text: {
+				primary: "text-primary-500",
+				accent: "text-accent-500",
+				red: "text-red-500",
+				blue: "text-blue-500",
+				zinc: "text-zinc-500",
+			},
 		},
 	},
-	outlined: {
-		background: {
-			primary:
-				"bg-transparent hover:bg-primary-500/5 active:bg-primary-500/10",
-			accent: "bg-transparent hover:bg-accent-500/5 active:bg-accent-500/10",
-			red: "bg-transparent hover:bg-red-500/5 active:bg-red-500/10",
-			blue: "bg-transparent hover:bg-blue-500/5 active:bg-blue-500/10",
-			zinc: "bg-transparent hover:bg-zinc-500/5 active:bg-zinc-500/10",
+	disabled: {
+		filled: {
+			background: {
+				primary: "bg-primary-300",
+				accent: "bg-accent-300",
+				red: "bg-red-300",
+				blue: "bg-blue-300",
+				zinc: "bg-zinc-300",
+			},
+			border: {
+				primary: "border-primary-300",
+				accent: "border-accent-300",
+				red: "border-red-300",
+				blue: "border-blue-300",
+				zinc: "border-zinc-300",
+			},
+			text: {
+				primary: "text-white",
+				accent: "text-white",
+				red: "text-white",
+				blue: "text-white",
+				zinc: "text-white",
+			},
 		},
-		border: {
-			primary: "border-primary-500",
-			accent: "border-accent-500",
-			red: "border-red-500",
-			blue: "border-blue-500",
-			zinc: "border-zinc-500",
+		outlined: {
+			background: {
+				primary: "bg-transparent",
+				accent: "bg-transparent",
+				red: "bg-transparent",
+				blue: "bg-transparent",
+				zinc: "bg-transparent",
+			},
+			border: {
+				primary: "border-primary-300",
+				accent: "border-accent-300",
+				red: "border-red-300",
+				blue: "border-blue-300",
+				zinc: "border-zinc-300",
+			},
+			text: {
+				primary: "text-primary-300",
+				accent: "text-accent-300",
+				red: "text-red-300",
+				blue: "text-blue-300",
+				zinc: "text-zinc-300",
+			},
 		},
 		text: {
-			primary: "text-primary-500",
-			accent: "text-accent-500",
-			red: "text-red-500",
-			blue: "text-blue-500",
-			zinc: "text-zinc-500",
-		},
-	},
-	text: {
-		background: {
-			primary:
-				"bg-transparent hover:bg-primary-500/5 active:bg-primary-500/10",
-			accent: "bg-transparent hover:bg-accent-500/5 active:bg-accent-500/10",
-			red: "bg-transparent hover:bg-red-500/5 active:bg-red-500/10",
-			blue: "bg-transparent hover:bg-blue-500/5 active:bg-blue-500/10",
-			zinc: "bg-transparent hover:bg-zinc-500/5 active:bg-zinc-500/10",
-		},
-		border: {
-			primary: "border-transparent",
-			accent: "border-transparent",
-			red: "border-transparent",
-			blue: "border-transparent",
-			zinc: "border-transparent",
-		},
-		text: {
-			primary: "text-primary-500",
-			accent: "text-accent-500",
-			red: "text-red-500",
-			blue: "text-blue-500",
-			zinc: "text-zinc-500",
+			background: {
+				primary: "bg-transparent",
+				accent: "bg-transparent",
+				red: "bg-transparent",
+				blue: "bg-transparent",
+				zinc: "bg-transparent",
+			},
+			border: {
+				primary: "border-transparent",
+				accent: "border-transparent",
+				red: "border-transparent",
+				blue: "border-transparent",
+				zinc: "border-transparent",
+			},
+			text: {
+				primary: "text-primary-300",
+				accent: "text-accent-300",
+				red: "text-red-300",
+				blue: "text-blue-300",
+				zinc: "text-zinc-300",
+			},
 		},
 	},
 };
@@ -121,6 +197,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
 			fullWidth = false,
 			leftIcon,
 			rightIcon,
+			disabled = false,
 			className,
 			children,
 			...props
@@ -135,9 +212,11 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
 				ref={ref}
 				className={cn(
 					sizes.btn[size],
-					colors[variant].background[color],
-					colors[variant].border[color],
-					colors[variant].text[color],
+					colors[disabled ? "disabled" : "enabled"][variant].background[
+						color
+					],
+					colors[disabled ? "disabled" : "enabled"][variant].border[color],
+					colors[disabled ? "disabled" : "enabled"][variant].text[color],
 					"flex items-center justify-center rounded border-2 font-medium transition",
 					{ "w-full": fullWidth },
 					className

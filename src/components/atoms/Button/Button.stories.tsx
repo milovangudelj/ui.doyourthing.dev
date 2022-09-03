@@ -27,16 +27,19 @@ export const Filled = Template.bind({});
 Filled.args = {
 	children: "Button",
 	variant: "filled",
+	disabled: false,
 };
 
 export const Outlined = Template.bind({});
 Outlined.args = {
 	children: "Button",
 	variant: "outlined",
+	disabled: false,
 };
 
 export const Borderless = Template.bind({});
 Borderless.args = {
 	children: "Button",
 	variant: "text",
+	disabled: false,
 };
