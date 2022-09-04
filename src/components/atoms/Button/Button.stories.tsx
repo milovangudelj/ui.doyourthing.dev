@@ -2,6 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Button, ButtonProps } from "./Button";
+import { DiamondsFour } from "phosphor-react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -15,11 +16,36 @@ const Template: ComponentStory<typeof Button> = ({
 	...props
 }: ButtonProps) => (
 	<div className="flex space-x-4">
-		<Button color="primary" {...props} />
-		<Button color="accent" {...props} />
-		<Button color="red" {...props} />
-		<Button color="blue" {...props} />
-		<Button color="zinc" {...props} />
+		<Button
+			color="primary"
+			leftIcon={DiamondsFour}
+			rightIcon={DiamondsFour}
+			{...props}
+		/>
+		<Button
+			color="accent"
+			leftIcon={DiamondsFour}
+			rightIcon={DiamondsFour}
+			{...props}
+		/>
+		<Button
+			color="red"
+			leftIcon={DiamondsFour}
+			rightIcon={DiamondsFour}
+			{...props}
+		/>
+		<Button
+			color="blue"
+			leftIcon={DiamondsFour}
+			rightIcon={DiamondsFour}
+			{...props}
+		/>
+		<Button
+			color="zinc"
+			leftIcon={DiamondsFour}
+			rightIcon={DiamondsFour}
+			{...props}
+		/>
 	</div>
 );
 
