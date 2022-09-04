@@ -17,7 +17,7 @@ interface Props extends ComponentPropsWithoutRef<"button"> {
 	size?: ButtonSize;
 	color?: ButtonColor;
 	fullWidth?: boolean;
-	rightIcon?: ReactNode | Icon | (() => JSX.Element);
+	rightIcon?: ReactNode | Icon | any;
 	leftIcon?: ReactNode | Icon | any;
 	children: ReactNode;
 }
