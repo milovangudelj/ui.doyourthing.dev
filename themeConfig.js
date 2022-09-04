@@ -1,9 +1,30 @@
+const withOpacity = (variableName) => {
+	return ({ opacityValue }) => {
+		if (opacityValue !== undefined) {
+			return `rgba(var(${variableName}), ${opacityValue})`;
+		}
+		return `rgb(var(${variableName}))`;
+	};
+};
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ["./src/components/**/*.{js,jsx,ts,tsx}"],
 	darkMode: "class",
 	theme: {
 		colors: {
+			skin: {
+				900: withOpacity("--color-900"),
+				800: withOpacity("--color-800"),
+				700: withOpacity("--color-700"),
+				600: withOpacity("--color-600"),
+				500: withOpacity("--color-500"),
+				400: withOpacity("--color-400"),
+				300: withOpacity("--color-300"),
+				200: withOpacity("--color-200"),
+				100: withOpacity("--color-100"),
+				50: withOpacity("--color-50"),
+			},
 			primary: {
 				900: "#064C28",
 				800: "#006531",
