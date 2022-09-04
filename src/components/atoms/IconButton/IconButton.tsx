@@ -14,7 +14,7 @@ interface Props extends ComponentPropsWithoutRef<"button"> {
 	size?: ButtonSize;
 	color?: ButtonColor;
 	fullWidth?: boolean;
-	icon: ReactNode;
+	icon: ReactNode | Icon | any;
 }
 
 const base = {
