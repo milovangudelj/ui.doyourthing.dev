@@ -47,6 +47,6 @@ esbuild
 		format: "cjs",
 		outfile: `${dst}/index.cjs`,
 		bundle: true,
-		external: ["react", "react-dom", "next", "classnames"],
+		external: ["react", "react-dom", "next", "classnames", "phosphor-react"],
 	})
 	.catch(() => process.exit(1));
