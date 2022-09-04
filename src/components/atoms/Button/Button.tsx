@@ -8,9 +8,9 @@ import {
 import cn from "classnames";
 import { Icon } from "phosphor-react";
 
-type ButtonVariant = "filled" | "outlined" | "text";
-type ButtonSize = "sm" | "md" | "lg";
-type ButtonColor = "primary" | "accent" | "red" | "blue" | "zinc";
+export type ButtonVariant = "filled" | "outlined" | "text";
+export type ButtonSize = "sm" | "md" | "lg";
+export type ButtonColor = "primary" | "accent" | "red" | "blue" | "zinc";
 
 interface Props extends ComponentPropsWithoutRef<"button"> {
 	variant?: ButtonVariant;
@@ -19,160 +19,64 @@ interface Props extends ComponentPropsWithoutRef<"button"> {
 	fullWidth?: boolean;
 	rightIcon?: ReactNode | Icon | (() => JSX.Element);
 	leftIcon?: ReactNode | Icon | any;
-	className?: string;
 	children: ReactNode;
 }
 
-const colors = {
-	enabled: {
-		filled: {
-			background: {
-				primary:
-					"bg-primary-500 hover:bg-primary-400 active:bg-primary-600",
-				accent: "bg-accent-500 hover:bg-accent-400 active:bg-accent-600",
-				red: "bg-red-500 hover:bg-red-400 active:bg-red-600",
-				blue: "bg-blue-500 hover:bg-blue-400 active:bg-blue-600",
-				zinc: "bg-zinc-700 hover:bg-zinc-600 active:bg-zinc-800",
+const base = {
+	enabled: (darker: boolean) => {
+		return {
+			filled: {
+				background: darker
+					? "bg-skin-700 hover:bg-skin-600 active:bg-skin-800"
+					: "bg-skin-500 hover:bg-skin-400 active:bg-skin-600",
+				border: darker
+					? "border-skin-700 hover:border-skin-600 active:border-skin-800"
+					: "border-skin-500 hover:border-skin-400 active:border-skin-600",
+				text: "text-white",
 			},
-			border: {
-				primary:
-					"border-primary-500 hover:border-primary-400 active:border-primary-600",
-				accent:
-					"border-accent-500 hover:border-accent-400 active:border-accent-600",
-				red: "border-red-500 hover:border-red-400 active:border-red-600",
-				blue: "border-blue-500 hover:border-blue-400 active:border-blue-600",
-				zinc: "border-zinc-700 hover:border-zinc-600 active:border-zinc-800",
-			},
-			text: {
-				primary: "text-white",
-				accent: "text-white",
-				red: "text-white",
-				blue: "text-white",
-				zinc: "text-white",
-			},
-		},
-		outlined: {
-			background: {
-				primary:
-					"bg-transparent hover:bg-primary-500/5 active:bg-primary-500/10",
-				accent:
-					"bg-transparent hover:bg-accent-500/5 active:bg-accent-500/10",
-				red: "bg-transparent hover:bg-red-500/5 active:bg-red-500/10",
-				blue: "bg-transparent hover:bg-blue-500/5 active:bg-blue-500/10",
-				zinc: "bg-transparent hover:bg-zinc-700/5 active:bg-zinc-700/10",
-			},
-			border: {
-				primary: "border-primary-500",
-				accent: "border-accent-500",
-				red: "border-red-500",
-				blue: "border-blue-500",
-				zinc: "border-zinc-700",
+			outlined: {
+				background: darker
+					? "bg-transparent hover:bg-skin-700/5 active:bg-skin-700/10"
+					: "bg-transparent hover:bg-skin-500/5 active:bg-skin-500/10",
+				border: darker ? "border-skin-700" : "border-skin-500",
+				text: darker ? "text-skin-700" : "text-skin-500",
 			},
 			text: {
-				primary: "text-primary-500",
-				accent: "text-accent-500",
-				red: "text-red-500",
-				blue: "text-blue-500",
-				zinc: "text-zinc-700",
+				background: darker
+					? "bg-transparent hover:bg-skin-700/5 active:bg-skin-700/10"
+					: "bg-transparent hover:bg-skin-500/5 active:bg-skin-500/10",
+				border: "border-transparent",
+				text: darker ? "text-skin-700" : "text-skin-500",
 			},
-		},
-		text: {
-			background: {
-				primary:
-					"bg-transparent hover:bg-primary-500/5 active:bg-primary-500/10",
-				accent:
-					"bg-transparent hover:bg-accent-500/5 active:bg-accent-500/10",
-				red: "bg-transparent hover:bg-red-500/5 active:bg-red-500/10",
-				blue: "bg-transparent hover:bg-blue-500/5 active:bg-blue-500/10",
-				zinc: "bg-transparent hover:bg-zinc-700/5 active:bg-zinc-700/10",
-			},
-			border: {
-				primary: "border-transparent",
-				accent: "border-transparent",
-				red: "border-transparent",
-				blue: "border-transparent",
-				zinc: "border-transparent",
-			},
-			text: {
-				primary: "text-primary-500",
-				accent: "text-accent-500",
-				red: "text-red-500",
-				blue: "text-blue-500",
-				zinc: "text-zinc-700",
-			},
-		},
+		};
 	},
-	disabled: {
-		filled: {
-			background: {
-				primary: "bg-primary-300",
-				accent: "bg-accent-300",
-				red: "bg-red-300",
-				blue: "bg-blue-300",
-				zinc: "bg-zinc-500",
+	disabled: (darker: boolean) => {
+		return {
+			filled: {
+				background: darker ? "bg-skin-500" : "bg-skin-300",
+				border: darker ? "bg-skin-500" : "border-skin-300",
+				text: "text-white",
 			},
-			border: {
-				primary: "border-primary-300",
-				accent: "border-accent-300",
-				red: "border-red-300",
-				blue: "border-blue-300",
-				zinc: "border-zinc-500",
+			outlined: {
+				background: "bg-transparent",
+				border: darker ? "bg-skin-500" : "border-skin-300",
+				text: darker ? "bg-skin-500" : "text-skin-300",
 			},
 			text: {
-				primary: "text-white",
-				accent: "text-white",
-				red: "text-white",
-				blue: "text-white",
-				zinc: "text-white",
+				background: "bg-transparent",
+				border: "border-transparent",
+				text: darker ? "bg-skin-500" : "text-skin-300",
 			},
-		},
-		outlined: {
-			background: {
-				primary: "bg-transparent",
-				accent: "bg-transparent",
-				red: "bg-transparent",
-				blue: "bg-transparent",
-				zinc: "bg-transparent",
-			},
-			border: {
-				primary: "border-primary-300",
-				accent: "border-accent-300",
-				red: "border-red-300",
-				blue: "border-blue-300",
-				zinc: "border-zinc-500",
-			},
-			text: {
-				primary: "text-primary-300",
-				accent: "text-accent-300",
-				red: "text-red-300",
-				blue: "text-blue-300",
-				zinc: "text-zinc-500",
-			},
-		},
-		text: {
-			background: {
-				primary: "bg-transparent",
-				accent: "bg-transparent",
-				red: "bg-transparent",
-				blue: "bg-transparent",
-				zinc: "bg-transparent",
-			},
-			border: {
-				primary: "border-transparent",
-				accent: "border-transparent",
-				red: "border-transparent",
-				blue: "border-transparent",
-				zinc: "border-transparent",
-			},
-			text: {
-				primary: "text-primary-300",
-				accent: "text-accent-300",
-				red: "text-red-300",
-				blue: "text-blue-300",
-				zinc: "text-zinc-500",
-			},
-		},
+		};
 	},
+};
+
+const colors: { [Key in ButtonColor]: string } = {
+	primary: "",
+	accent: "theme-accent",
+	blue: "theme-blue",
+	red: "theme-red",
+	zinc: "theme-zinc",
 };
 
 const sizes = {
@@ -212,11 +116,16 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
 				ref={ref}
 				className={cn(
 					sizes.btn[size],
-					colors[disabled ? "disabled" : "enabled"][variant].background[
-						color
-					],
-					colors[disabled ? "disabled" : "enabled"][variant].border[color],
-					colors[disabled ? "disabled" : "enabled"][variant].text[color],
+					base[disabled ? "disabled" : "enabled"](color === "zinc")[
+						variant
+					].background,
+					base[disabled ? "disabled" : "enabled"](color === "zinc")[
+						variant
+					].border,
+					base[disabled ? "disabled" : "enabled"](color === "zinc")[
+						variant
+					].text,
+					colors[color],
 					"flex h-min items-center justify-center rounded border-2 font-medium transition",
 					{ "w-full": fullWidth },
 					className
