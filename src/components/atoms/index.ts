@@ -1,4 +1,5 @@
 export * from "./Button";
+export * from "./IconButton";
 export * from "./GoogleButton";
 export * from "./Link";
 export * from "./Logo";
