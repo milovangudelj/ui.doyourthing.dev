@@ -8,7 +8,8 @@
 	"files": [
 		"README.md",
 		"dist",
-		"themeConfig.js"
+		"themeConfig.js",
+		"styles/globals.css"
 	],
 	"sideEffects": false,
 	"source": "./src/components/index.ts",
